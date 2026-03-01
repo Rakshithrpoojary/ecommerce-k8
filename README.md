@@ -5,7 +5,7 @@ Full Stack E-Commerce MERN APP
 
 Backend .env fil 
 
-MONGODB_URI = 
+MONGODB_URI =
 TOKEN_SECRET_KEY = 
 FRONTEND_URL
 
