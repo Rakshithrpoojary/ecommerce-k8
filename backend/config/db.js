@@ -1,9 +1,12 @@
+const fs = require("fs");
+const mongouri =fs.readFileSync("/mnt/secrets/MONGODB_URI","utf8").trim();
 const mongoose = require("mongoose")
+console.log("MONGOURI",mongouri)
 
 
 async function connectDB(){
     try{
-        await mongoose.connect(process.env.MONGODB_URI)
+        await mongoose.connect(mongouri)
     }catch(err){
         console.log(err)
     }

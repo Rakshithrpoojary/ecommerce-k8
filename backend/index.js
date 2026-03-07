@@ -1,3 +1,6 @@
+const fs = require("fs");
+const PORTS =fs.readFileSync("/mnt/secrets/PORTS","utf8").trim();
+console.log(PORTS)
 const express = require('express')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
@@ -11,7 +14,7 @@ app.use(cookieParser())
 
 app.use("/api",router)
 
-const PORT = 4000 || process.env.PORT
+const PORT = 4000 || PORTS
 
 
 connectDB().then(()=>{

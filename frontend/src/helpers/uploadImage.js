@@ -1,4 +1,7 @@
-const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME_CLOUDINARY}/image/upload`
+const fs = require("fs");
+const REACT_APP_CLOUD_NAME_CLOUDINARY =fs.readFileSync("/mnt/secrets/REACT_APP_CLOUD_NAME_CLOUDINARYS","utf8").trim();
+console.log(REACT_APP_CLOUD_NAME_CLOUDINARY);
+const url = `https://api.cloudinary.com/v1_1/${REACT_APP_CLOUD_NAME_CLOUDINARY}/image/upload`
 
 const uploadImage  = async(image) => {
     const formData = new FormData()
