@@ -33,10 +33,14 @@ jobs:
       - name: Install packages
         working-directory: frontend
         run: npm install
+        
+      - name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@0.33.1
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          trivy-config: trivy.yaml
 
-      - name: Trivy scan filesystem dependencies
-        run: |
-          trivy fs . > trivy.txt
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
