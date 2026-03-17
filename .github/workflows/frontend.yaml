@@ -34,13 +34,16 @@ jobs:
         working-directory: frontend
         run: npm install
         
-      # - name: Run Trivy vulnerability scanner in fs mode
-      #   uses: aquasecurity/trivy-action@0.33.1
-      #   with:
-      #     scan-type: 'fs'
-      #     scan-ref: '.'
-      #     trivy-config: trivy.yaml
+      - name: Run Trivy vulnerability scanner in fs mode
+        run: |
+          sudo apt-get install wget gnupg
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+          echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update -y
+          sudo apt-get install trivy -y
 
+      - name: scan dependency
+        run: trivy fs . > trivy.txt
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
@@ -79,9 +82,9 @@ jobs:
         run: |
           docker build -t $AWS_ECR_REPO_NAME frontend
 
-      # - name: Trivy scan Docker image
-      #   run: |
-      #     trivy image $AWS_ECR_REPO_NAME > trivyimage.txt
+      - name: Trivy scan Docker image
+        run: |
+          trivy image $AWS_ECR_REPO_NAME > trivyimage.txt
 
       - name: Tag Docker image
         run: |
