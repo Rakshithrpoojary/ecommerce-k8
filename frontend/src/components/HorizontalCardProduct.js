@@ -55,7 +55,7 @@ const HorizontalCardProduct = ({category, heading}) => {
             <button  className='bg-white shadow-md rounded-full p-1 absolute right-0 text-lg hidden md:block' onClick={scrollRight}><FaAngleRight/></button> 
 
            {   loading ? (
-                loadingList.map((product,index)=>{
+                loadingList?.map((product,index)=>{
                     return(
                         <div className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
                             <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse'>
@@ -74,7 +74,7 @@ const HorizontalCardProduct = ({category, heading}) => {
                     )
                 })
            ) : (
-            data.map((product,index)=>{
+            data?.map((product,index)=>{
                 return(
                     <Link to={"product/"+product?._id} className='w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
                         <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>

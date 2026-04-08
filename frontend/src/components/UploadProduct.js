@@ -134,7 +134,7 @@ const UploadProduct = ({
               <select required value={data.category} name='category' onChange={handleOnChange} className='p-2 bg-slate-100 border rounded'>
                   <option value={""}>Select Category</option>
                   {
-                    productCategory.map((el,index)=>{
+                    productCategory?.map((el,index)=>{
                       return(
                         <option value={el.value} key={el.value+index}>{el.label}</option>
                       )
@@ -157,7 +157,7 @@ const UploadProduct = ({
                     data?.productImage[0] ? (
                         <div className='flex items-center gap-2'>
                             {
-                              data.productImage.map((el,index)=>{
+                              data?.productImage?.map((el,index)=>{
                                 return(
                                   <div className='relative group'>
                                       <img 

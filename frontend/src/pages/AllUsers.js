@@ -52,7 +52,7 @@ const AllUsers = () => {
             </thead>
             <tbody className=''>
                 {
-                    allUser.map((el,index) => {
+                    allUser?.map((el,index) => {
                         return(
                             <tr>
                                 <td>{index+1}</td>

@@ -62,7 +62,7 @@ const ChangeUserRole = ({
                 <p>Role :</p>  
                 <select className='border px-4 py-1' value={userRole} onChange={handleOnChangeSelect}>
                     {
-                        Object.values(ROLE).map(el => {
+                        Object.values(ROLE)?.map(el => {
                             return(
                                 <option value={el} key={el}>{el}</option>
                             )

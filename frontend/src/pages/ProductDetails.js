@@ -130,7 +130,7 @@ const ProductDetails = () => {
                     loading ? (
                       <div className='flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
                         {
-                          productImageListLoading.map((el,index) =>{
+                          productImageListLoading?.map((el,index) =>{
                             return(
                               <div className='h-20 w-20 bg-slate-200 rounded animate-pulse' key={"loadingImage"+index}>
                               </div>
